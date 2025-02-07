@@ -1,0 +1,101 @@
+/* General styles */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fffcda;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    width: 50%;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+h1 {
+    color: #ff5733;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #666;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.slidecontainer{
+    width: 100%;
+}
+
+.slider{
+    width: 100%;
+    background: #d3d3d3;
+    opacity: 0.7;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb{
+    /* add blue sliders css */
+}
+
+.age-section{
+    display: none;
+}
+
+
+/* label {
+    font-weight: bold;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ff5733;
+    font-size: 1rem;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff99cc;
+    background-color: #fff0f5;
+}
+
+.birthdate-fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.birthdate-fields input, .birthdate-fields select {
+    width: 32%;
+}
+
+button {
+    background: #ff5733;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ff99cc;
+} */
