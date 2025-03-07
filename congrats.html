@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SillySignups | Congrats</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./script.js"></script>    
+</head>
+<body id="congrats-body">
+    <h1 id="congrats-heading">Congratulations!</h1>
+    <h2 id="congrats-text">You've officially joined the ranks of the bewilderingly bizarre!</h2>
+    <button type="submit" id="certificate-btn">Download Certificate</button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        window.onload = function () {
+            launchConfetti();
+            document.getElementById("certificate-btn").addEventListener("click", launchConfetti);
+        };
+    
+        function launchConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ["#ff0", "#ff69b4", "#87CEFA", "#FFD700", "#32CD32"]
+            });
+        }
+    </script>
+    
+</body>
+</html>

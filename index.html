@@ -1,151 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="scripts/script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silly Signups</title>
-    <link rel="stylesheet" href="styles/all.min.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <title>SillySignups | Home</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./script.js"></script>
 </head>
-<body>
-    <header>
-        <h1>Silly Signups</h1>
-    </header>
-    <main>
-        <div class="container">
-            <h2 class="subtitle">The most ridiculous form you'll ever fill out.</h2>
-
-            <form action="#" id="sillyForm" name="silly_form">
-                <div class="form_element">
-                    <label for="name">Your Name: </label>
-                    <input type="text" id="name" name="name" value="Place Your Real Name here">
-                </div>
-
-                <div class="form_element"> 
-                    <label for="name">Phone Number: </label>
-                    <div class="slidecontainer">
-                        <input type="range" id="phonenum" class="slider" min="0000000000" max="9999999999" name="phonenum">
-                        <div class="number_output">Number: <span id="val"></span></div>
-                    </div>
-                </div>
-
-                <div class="form_element">
-                    <label for="address">Your Address: </label>
-                    <textarea name="address" id="address" rows="10" cols="50" readonly>123 Imaginary Lane, Fantasyland</textarea>
-                </div>
-
-                <!-- 2 ideas -
-                 1st: contry selection triggers funny message || 
-                 2nd: give coordinates in options and have country name in the output -->
-                <div class="form_element">
-                    <label for="country">Country: </label>
-                    <select name="country" id="country">
-                        <option value="X">Select Your HomeLand...</option>
-                        <option value="can">Canada</option>
-                        <option value="usa">USA</option>
-                        <option value="ind">India</option>
-                        <option value="korea">Korea</option>
-                        <option value="jap">Japan</option>
-                        <option value="bra">Brazil</option>
-                        <option value="china">China</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <div id="country-output" class="funny-message"></div>
-                </div>
-
-                <div class="form_element">
-                    <label for="gender">Gender: </label>
-                    <div class="gender_options">
-                        <input type="checkbox" name="gender" id="gen1" value="m"> Male
-                        <input type="checkbox" name="gender" id="gen2" value="f"> FeMale
-                        <input type="checkbox" name="gender" id="gen2" value="o"> Prefer not to say
-                    </div>
-                    <p id="gender_output"></p>
-                </div>
-
-                <div class="form_element">
-                    <label for="username">Username: </label>
-                    <input type="text" id="username" name="username" value="Place Your not so Real Name here">
-                </div>
-
-                <div class="form_element">
-                    <!-- for this add rules like cant have the letter E
-                     greater than 2 and less than 10 characters only 
-                     add blood type
-                     use Regex-->
-                    <label for="password">Password: </label>
-                    <input type="" id="password" name="password" value="wow">
-                </div>
-
-                <div class="form_element">
-                    <label for="age">Age: </label>
-                    <select name="age" id="age">
-                        <option value="X" disabled selected>Select your Age</option>
-                        <option value="kid">Kid</option>
-                        <option value="teen">Teen</option>
-                        <option value="adult">Adult</option>
-                        <option value="old">Old</option>
-                    </select>
-                    <div id="kid-section" class="age-section">
-                        <p>No no We need a little precise age from you:</p>
-                        <div id="kid-age-options">
-                            <div class="kid-age"><input type="radio" name="kid-age" value="0" checked disabled> <label>0</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="1"> <label>1</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="2"> <label>2</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="3"> <label>3</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="4"> <label>4</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="5"> <label>5</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="6"> <label>6</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="7"> <label>7</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="8"> <label>8</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="9"> <label>9</label></div>
-                            <div class="kid-age"><input type="radio" name="kid-age" value="10"> <label>10</label></div>
-                        </div>
-                    </div>
-
-                    <div id="teen-section" class="age-section">
-                        <label for="teen"> Vibe Check here!: </label>
-                        <select name="teen" id="teen">
-                            <option value="X">Pick Your Era Bestie...</option>
-                            <option value="13">Sus teen - (13)</option>
-                            <option value="14">Focheen</option>
-                            <option value="15">Turning Totally Cringe - (15)</option>
-                            <option value="16">Legally Driver, Still a Noob</option>
-                            <option value="17">Main Gigachad Era - (17)</option>
-                            <option value="18">Legal Age, But Still Clueless</option>
-                            <option value="19">Can get Drunk now</option>
-                            <option value="20">Chwenchy</option>
-                        </select>
-                    </div>
-
-                    <div id="adult-section" class="age-section">
-                        <label for="adult">Drop your Life Expirience Level Here: </label>
-                        <!-- if else logic for ranges for age like 21-30 Young adults, etc -->
-                        <input type="number" min="21" max="60" id="adult" name="adult" placeholder="21-60">
-                    </div>
-
-                    <div id="old-section" class="age-section">
-                        <label for="adult">I am sorry you had to go through this today Here is the simplest one: </label>
-                        <!-- use css to reduce the size so they cant see what to choose-->
-                            <div class="old-age"><input type="radio" name="old-age" value="o1"> <label>60-70</label></div>
-                            <div class="old-age"><input type="radio" name="old-age" value="o2"> <label>70-80</label></div>
-                            <div class="old-age"><input type="radio" name="old-age" value="o3"> <label>80-90</label></div>
-                            <div class="old-age"><input type="radio" name="old-age" value="o4"> <label>90-100</label></div>
-                            <div class="old-age"><input type="radio" name="old-age" value="o5"> <label>100+</label></div>  
-                    </div>
-
-                    <div class="form_element">
-                        <label for="captcha">Are You a Robot?</label>
-                        <input type="text" id="captcha" name="captcha" placeholder="Type: Nope">
-                    </div>
-
-                    <!-- email and DOB can be added -->
-                </div>
-            </form>
-        </div>
-    </main>
-    <footer></footer>
-
+<body id="index-body">
+    <div id="animatedBackground"></div>
+    <h1 id="index-heading">Welcome to SillySignups!</h1>
+    <h2 id="funnyTagline">The most ridiculous form you'll ever fill out.</h2>
+    <button id="getstarted">Let's Get Started</button>
 </body>
 </html>
