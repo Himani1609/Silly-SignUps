@@ -58,12 +58,12 @@
 
 
 #funnyTagline{
-    color: white;
+    color: black;
     font-size: 2rem;
     font-family: 'Comic Neue', cursive;
-    text-shadow: 2px 2px 0px rgb(58, 58, 58);
+    text-shadow: 1px 1px 0px rgb(58, 58, 58);
     position: relative;
-    animation: bouncyMove 8s infinite alternate ease-in-out;
+    animation: bouncyMove 10s infinite alternate linear;
 }
 
 @keyframes bouncyMove {
@@ -132,7 +132,7 @@
 
 form {
     background-color: white;
-    border: 5px solid #cdafd5;
+    border: 5px solid #8FC9FE;
     padding: 20px;
     border-radius: 50px;
     min-width: 1000px;
@@ -152,13 +152,20 @@ form {
 }
 
 
-label {
+label, #kid-label {
     display: block; 
     font-size: 1.5rem;
     letter-spacing: 5px;
     margin-bottom: 20px;
     animation: colorshift 0.5s linear infinite;
 }
+
+#kid-age-options{
+    display: flex;
+    gap: 5px;
+    justify-content: space-evenly;
+}
+
 
 
 @keyframes colorshift{
@@ -168,22 +175,39 @@ label {
 
 
 
-input,textarea{
+input,textarea, #age, #teen, #adult, #old, #flags{
     padding: 15px 25px;
     border: none;
     box-shadow: 3px 3px 0px rgb(104, 103, 103);
-    background-color: #cdafd5;
+    background-color: #8FC9FE;
     color: black;
     border-radius: 10px;
     min-width: 500px;
-
 }
 
-input:focus,textarea:focus {
+.kid-age input, .old-age input{
+    min-width: 0px;
+}
+
+
+
+input:focus,textarea:focus{
     animation: boing 0.3s ease-in-out;
     background-color: white;
     color: black;
 }
+
+#age{
+    margin-bottom: 20px;
+}
+
+#age:focus, #teen:focus, #adult:focus, #old:focus, #flags:focus{
+    animation: boing 0.3s ease-in-out;
+    background-color: white;
+    border: 2px solid rgb(104, 103, 103);
+
+}
+
 
 input::placeholder{
     color: black;
@@ -221,19 +245,19 @@ textarea{
     margin-top: 20px;   
 }
 
-#dob-day, #dob-month, #dob-year{
+#dob-day, #dob-month, #dob-year, #age, #teen, #flags{
     font-family: 'Quicksand', 'Poppins', sans-serif;
     font-weight: bold; 
     font-style: italic;
     padding: 15px 25px;
     border: none;
     box-shadow: 3px 3px 0px rgb(104, 103, 103);
-    background-color: #cdafd5;
+    background-color: #8FC9FE;
     color: black;
     border-radius: 10px;
 }
 
-#dob-day:focus, #dob-month:focus, #dob-year:focus {
+#dob-day:focus, #dob-month:focus, #dob-year:focus, #flags:focus {
     animation: boing 0.3s ease-in-out;
     background-color: white;
     border: 2px solid rgb(104, 103, 103);
@@ -242,12 +266,17 @@ textarea{
 #gender-options{
     display: flex;
     justify-content: center;
-    color: #cdafd5;
+    color: #8FC9FE;
     text-shadow: 1px 1px 0px rgb(104, 103, 103);
     font-size: 1.2rem;
     gap: 20px;
     letter-spacing: 3px;
 }
+
+.age-section{
+    display: none;
+}
+
 
 input[type="checkbox"] {
     transform: scale(1.5);
@@ -258,18 +287,39 @@ input[type="checkbox"] {
     padding: 0px;
     border: none;
     box-shadow: 0px 0px 0px rgb(104, 103, 103);
-    background-color: #cdafd5;
-    color: #cdafd5;
+    background-color: #8FC9FE;
+    color: #8FC9FE;
     border-radius: 10px;
     min-width: 0px;
 }
 
-
-input[type="range"]{
-    -webkit-appearance: none; 
-    background: #cdafd5;
+.slider{
+    box-shadow: none;
 }
 
+.kid-age input, .old-age input{
+    box-shadow: none;
+}
+
+span{
+    color: #4f73f4;
+}
+
+#flags {
+    width: 200px;
+}
+
+.flag-img {
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+#selected_flag{
+    margin-top: 20px;
+
+}
 
 #form-submit {
     font-size: 1.5rem;

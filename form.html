@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SillySignups | Form</title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script src="./script.js"></script>
 </head>
 <body id="form-body">
@@ -14,11 +16,9 @@
 
         <div class="form-element">
             <label for="yourname">Your Name</label>
-            <input type="text" id="yourname" name="yourname" placeholder="Type your name here">
+            <input type="text" name="yourname" id="yourname" placeholder="Type your name here">
             <div id="funny-name-text"></div>
         </div>
-
-
 
 
         <div class="form-element" id="dob-div">
@@ -51,11 +51,61 @@
         
 
 
-
         <div class="form-element">
-            <label for="age">Age</label>
-            <input type="text" id="age" name="age">
-        </div>
+            <label for="age">Age: </label>
+            <select name="age" id="age">
+                <option value="X" disabled selected>Select your Age</option>
+                <option value="kid">Kid</option>
+                <option value="teen">Teen</option>
+                <option value="adult">Adult</option>
+                <option value="old">Old</option>
+            </select>
+            <div id="kid-section" class="age-section">
+                <p id="kid-label">No no We need a little precise age from you:</p>
+                <div id="kid-age-options">
+                    <div class="kid-age"><input type="radio" name="kid-age" value="0" checked disabled> <label>0</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="1"> <label>1</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="2"> <label>2</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="3"> <label>3</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="4"> <label>4</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="5"> <label>5</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="6"> <label>6</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="7"> <label>7</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="8"> <label>8</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="9"> <label>9</label></div>
+                    <div class="kid-age"><input type="radio" name="kid-age" value="10"> <label>10</label></div>
+                </div>
+            </div>
+
+            <div id="teen-section" class="age-section">
+                <label for="teen"> Vibe Check here!: </label>
+                <select name="teen" id="teen">
+                    <option value="X">Pick Your Era Bestie...</option>
+                    <option value="13">Sus teen - (13)</option>
+                    <option value="14">Focheen</option>
+                    <option value="15">Turning Totally Cringe - (15)</option>
+                    <option value="16">Legally Driver, Still a Noob</option>
+                    <option value="17">Main Gigachad Era - (17)</option>
+                    <option value="18">Legal Age, But Still Clueless</option>
+                    <option value="19">Can get Drunk now</option>
+                    <option value="20">Chwenchy</option>
+                </select>
+            </div>
+
+            <div id="adult-section" class="age-section">
+                <label for="adult">Drop your Life Expirience Level Here: </label>
+                <input type="number" min="21" max="60" id="adult" name="adult" placeholder="21-60">
+            </div>
+
+            <div id="old-section" class="age-section">
+                <label for="adult">I am sorry you had to go through this today Here is the simplest one: </label>
+                    <div class="old-age"><input type="radio" name="old-age" value="o1"> <label>60-70</label></div>
+                    <div class="old-age"><input type="radio" name="old-age" value="o2"> <label>70-80</label></div>
+                    <div class="old-age"><input type="radio" name="old-age" value="o3"> <label>80-90</label></div>
+                    <div class="old-age"><input type="radio" name="old-age" value="o4"> <label>90-100</label></div>
+                    <div class="old-age"><input type="radio" name="old-age" value="o5"> <label>100+</label></div>  
+            </div>
+
 
 
 
@@ -78,7 +128,11 @@
 
         <div class="form-element">
             <label for="country">Country</label>
-            <input type="text" id="country" name="country">
+            <select name="flags" id="flags">
+                <option value="X" disabled selected>Choose Your Country</option>
+            </select>
+
+            <div id="selected_flag"></div>
         </div>
 
 
@@ -91,21 +145,7 @@
             </div>
         </div>
 
-
-        <div class="form-element">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username">
-        </div>
-        <div class="form-element">
-            <label for="email">Email Address</label>
-            <input type="text" id="email" name="email">
-        </div>
-        <div class="form-element">
-            <label for="password">Password</label>
-            <input type="text" id="password" name="password">
-        </div>
         <button type="submit" id="form-submit">I'm done</button>
     </form>
-    
 </body>
 </html>

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SillySignups | Congrats</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <link rel="stylesheet" href="./styles/styles.css">
     <script src="./script.js"></script>    
 </head>
@@ -26,6 +28,20 @@
                 origin: { y: 0.6 },
                 colors: ["#ff0", "#ff69b4", "#87CEFA", "#FFD700", "#32CD32"]
             });
+        }
+
+        let certificateButton = document.getElementById("certificate-btn");
+        if (certificateButton) {
+        certificateButton.addEventListener("click", function (event) {
+            event.preventDefault(); 
+
+            let sound = new Howl({
+                src: ["./sounds/certificate.mp3"], 
+                volume: 1,
+            });
+
+            sound.play();
+        });
         }
     </script>
     

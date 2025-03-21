@@ -12,9 +12,9 @@ window.onload = function () {
             "Guaranteed to waste 2 minutes of your life."
         ];
 
-        tagLine.onmouseover = function () {
-            tagLine.innerText = funnyTaglines[Math.floor(Math.random() * funnyTaglines.length)];
-        };
+    setInterval(() => {
+        tagLine.innerText = funnyTaglines[Math.floor(Math.random() * funnyTaglines.length)];
+    }, 3000);
     }
 
 
@@ -22,15 +22,25 @@ window.onload = function () {
     const getStartedBtn = document.getElementById("getstarted");
     if (getStartedBtn) {
         getStartedBtn.onclick = function () {
-            window.location.href = "form.html";
+            let sound = new Howl({
+                src: ["./sounds/boing.mp3"], 
+                volume: 1,
+                onend: function () {
+                    window.location.href = "form.html";
+                }
+            });
+
+            sound.play();
+           
         };
     }
 
-    // Form handler for form.html
-    formHandler = document.forms.signup_form;
+    if (window.location.pathname.includes('form.html')) {
+       
+        const formHandler = document.forms.signup_form;
 
 
-    // Changing heading on form.html
+        // Changing heading on form.html
     const formHeading = document.getElementById("form-heading");
     if(formHeading){
         const funnyHeadings = ["Welcome to the Most Ridiculous Signup Form!",
@@ -43,12 +53,10 @@ window.onload = function () {
             "Sign Up for What? We Have No Idea Either!",
             "Warning: Side Effects May Include Uncontrollable Laughter!",
             "You're Just a Few Clicks Away from Ultimate Nonsense!"]
-
-
-            formHeading.onmouseover = function(){
-                formHeading.innerText = funnyHeadings[Math.floor(Math.random()*funnyHeadings.length)];
-            }
             
+            setInterval(() => {
+                formHeading.innerText = funnyHeadings[Math.floor(Math.random()*funnyHeadings.length)];
+            }, 3000);
     }
 
     // On every keyboard press there should be some funny message below your name field
@@ -131,39 +139,34 @@ window.onload = function () {
     populateYear();
     
 
-    // gender output
+    // Gender Output
     var gender = formHandler.querySelectorAll('input[name="gender"]');
     var genderoutput = document.getElementById("gender-output");
 
     gender.forEach(function (checkbox) {
-        checkbox.addEventListener("change", function(){
+        checkbox.addEventListener("change", function () {
             var selectedGenders = [];
-            gender.forEach(function(checkbox) {
+            gender.forEach(function (checkbox) {
                 if (checkbox.checked) {
                     selectedGenders.push(checkbox.value);
                 }
             });
 
-
-    
-            if(selectedGenders.includes('o') && selectedGenders.includes('f') && selectedGenders.includes('m')){
-                genderoutput.innerHTML = "Huh?";
-            }else if (selectedGenders.includes('o') && selectedGenders.includes('m')) {
-                genderoutput.innerHTML = "My Friend, How can you prefer not to say and then say you are a Boy";
-            }else if(selectedGenders.includes('o') && selectedGenders.includes('f')){
-                genderoutput.innerHTML = "My Friend, How can you prefer not to say and then say you are a Girl";
-            }else if (selectedGenders.includes('m') && selectedGenders.includes('f')) {
-                genderoutput.innerHTML = "Huh? How can you be both?";
-            }else if (selectedGenders.includes('m')) {
-                genderoutput.innerHTML = "Ah, a fine gentleman!";
-            }else if(selectedGenders.includes('f')){
-                genderoutput.innerHTML = "A wonderful lady has arrived! ";
-            }else if (selectedGenders.includes('o')) {
-                genderoutput.innerHTML = "A mysterious person of great wisdom!";
+            if (selectedGenders.length === 0) {
+                genderoutput.innerHTML = "Mysterious entity detected... Are you a ghost?";
+            } else if (selectedGenders.length > 1) {
+                genderoutput.innerHTML = "Wait... Are you evolving?";
+            } else {
+                var messages = {
+                    "m": "Ah, a fine gentleman has arrived! Do you prefer coffee or tea?",
+                    "f": "A wonderful lady graces us! Time to shine!",
+                    "o": "A mysterious enigma appears! Are you a wizard?"
+                };
+                genderoutput.innerHTML = messages[selectedGenders[0]] || "A legendary being has entered the chat!";
             }
-
-        })
+        });
     });
+
 
 
     //phone number slider output
@@ -177,5 +180,92 @@ window.onload = function () {
     }
     
 
+    var userage =  formHandler.age;
 
+    var kidsec = document.getElementById("kid-section");
+    var teensec = document.getElementById("teen-section");
+    var adultsec = document.getElementById("adult-section");
+    var oldsec = document.getElementById("old-section");
+
+    userage.onchange = function () {
+        var selectedage = userage.value; 
+
+        kidsec.style.display = "none";
+        teensec.style.display = "none";
+        adultsec.style.display = "none";
+        oldsec.style.display = "none";
+
+        if (selectedage == "kid") {
+            kidsec.style.display = "block";
+        } else if (selectedage == "teen") {
+            teensec.style.display = "block";
+        } else if (selectedage == "adult") {
+            adultsec.style.display = "block";
+        } else if (selectedage == "old") {
+            oldsec.style.display = "block";
+        }
+    };
+
+
+    // country flags API
+    var flags = document.getElementById("flags");
+    var url = "https://restcountries.com/v3.1/all?fields=name,flags";
+    var sel_img = document.getElementById("selected_flag");
+
+    let countryData = []; 
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            countryData = data; 
+
+            data.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.name.common;
+                if(country.flags.alt !== ""){
+                option.textContent = country.flags.alt;
+                option.setAttribute("data-flag", country.flags.png); 
+                option.setAttribute("data-alt", country.flags.alt);
+                flags.appendChild(option);
+                };
+                
+            });
+        });
+
+    flags.onchange = function() {
+        const selectedOption = flags.options[flags.selectedIndex];
+        const flagUrl = selectedOption.getAttribute("data-flag");
+        const altText = selectedOption.getAttribute("data-alt");
+
+        if (flagUrl) {
+            sel_img.innerHTML = `<img src="${flagUrl}" alt="${altText}" width="100"/>`;
+        } else {
+            sel_img.innerHTML = "";
+        }
+    };
+
+
+    // Add sound when user submits the form
+    let submitButton = document.getElementById("form-submit");
+    if (submitButton) {
+        submitButton.addEventListener("click", function (event) {
+            event.preventDefault(); 
+
+            let sound = new Howl({
+                src: ["./sounds/submit.mp3"], 
+                volume: 1,
+                onend: function () {
+                    window.location.replace("congrats.html");
+                }
+            });
+
+            sound.play();
+        });
+    }
+
+        
+    }
+
+
+    
 };
